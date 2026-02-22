@@ -1,1 +1,1 @@
-pytest
+PYTHONPATH=. pytest

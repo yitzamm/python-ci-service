@@ -78,7 +78,11 @@ Se ejecutan:
 - Lint → análisis de calidad de código (push).
 - Newman → pruebas de API basadas en la colección de Postman (pull).
 
-Tan pronto como el pipeline consigue pasar las pruebas de pytest, API, lint y Newman procedo a aprobar el merge a prod/main y continuar con el desarrollo de nuevos features para el aplicativo. En escenarios reales, la aprobación le correspondería al personal autorizado.
+Tan pronto como el pipeline consigue pasar las pruebas de pytest, API, lint y Newman puedo aprobar el merge a prod/main y continuar con el desarrollo de nuevos features para el aplicativo. En escenarios reales, la aprobación le correspondería al supervisor autorizado.
+
+Como punto final agregué un scanner de seguridad al proyecto usando Bandit. Bandit utiliza 3 niveles de confidencialidad y severidad para etiquetar errores potenciales y señalar malas prácticas: Low, Medium y High. Sin embargo, no quería que el escaneo detuviera el pipeline a menos de que el error fuera crítico entonces cambié bandit -r . (scan básico) por bandit -r . -lll --exit-zero. El problema esque los logs no muestran un registro detallado de los errores y tampoco generan ningún reporte, por lo que resulta difícil saber dónde se encuentra la brecha y qué tan grave es. Para generar un reporte manteniendo la restricción anterior podemos usar: bandit -r . -f json -o bandit_report.json -lll. Es buena práctica usar artefactos para gestionar estos reportes como lo hicimos con las pruebas de Newman, bajo esa misma lógica podemos mandar a subir el bandit report a un segundo artefacto desde el pipeline de push.
+
+<img width="1551" height="213" alt="Image" src="https://github.com/user-attachments/assets/ea52542f-0a0d-46b4-88db-14454dcc7570" />
 
 ### Integración y despliegue
 

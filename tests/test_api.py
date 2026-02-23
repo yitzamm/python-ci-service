@@ -7,11 +7,6 @@ def test_get_vegetables():
 
     response = client.get("/vegetables")
 
-    # nosec: safe test code
-    assert response.status_code == 200 
-    
-    # nosec: safe test code
-    assert response.json["count"] == 5 
-
-    # nosec: safe test code
-    assert len(response.json["data"]) == 5 
+    assert response.status_code == 200  #  nosec: safe test code
+    assert response.json["count"] == 5  #  nosec: safe test code
+    assert len(response.json["data"]) == 5  #  nosec: safe test code

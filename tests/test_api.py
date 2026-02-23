@@ -1,5 +1,6 @@
 from app.main import create_app
 
+
 def test_get_vegetables():
     app = create_app()
     client = app.test_client()

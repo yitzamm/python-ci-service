@@ -37,7 +37,7 @@ jobs:
 
       # 6. Escáner de seguridad
       - name: Security scan - bandit
-        run: bandit -r .
+        run: bandit -r . -f json -o bandit_report.json -lll
 
       # 6. Pruebas Python
       - name: Run tests

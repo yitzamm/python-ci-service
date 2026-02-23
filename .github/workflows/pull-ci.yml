@@ -1,6 +1,6 @@
 name: Pull Request CI
 
-# Se dispara en solicitudes pull a la rama prod (main)
+# Se dispara en solicitudes pull --> merge a la rama prod (main)
 on:
   pull_request:
     branches:
@@ -14,3 +14,26 @@ jobs:
       # 1. Checkout repo
       - name: Checkout code
         uses: actions/checkout@v4
+
+      # 2. Instalar Node.js para correr Newman
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # 3. Instalar Newman globalmente
+      - name: Install Newman
+        run: npm install -g newman
+
+      # 4. Pruebas Newman
+      - name: Run Newman API tests
+        run: |
+          # Replace 'collection.json' with your Postman collection file
+          newman run collection.json --reporters cli,junit --reporter-junit-export newman-results.xml
+
+      # 5. Generar artefacto con los resultados obtenidos
+      - name: Upload Newman results
+        uses: actions/upload-artifact@v3
+        with:
+          name: newman-results
+          path: newman-results.xml

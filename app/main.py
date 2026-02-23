@@ -1,5 +1,9 @@
-def add(a, b):
-    return a + b
+from flask import Flask
 
-def multiply(a, b):
-    return 0
+def create_app():
+    app = Flask(__name__)
+
+    from .routes import api
+    app.register_blueprint(api)
+
+    return app

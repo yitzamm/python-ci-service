@@ -1,5 +1,4 @@
-from app.main import add
-from app.main import multiply
+from app.services import add, multiply
 
 def test_add_success():
     assert add(2, 3) == 5

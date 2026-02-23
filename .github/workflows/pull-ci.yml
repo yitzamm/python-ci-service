@@ -28,7 +28,7 @@ jobs:
       # 4. Pruebas Newman
       - name: Run Newman API tests
         run: |
-          newman run postman/collection.json --insecure --reporters cli,junit --reporter-junit-export newman-results.xml
+          newman run postman/collection.json --insecure --reporters cli,junit --reporter-junit-export newman-results.json
 
       # 5. Generar artefacto con los resultados de la prueba Newman
       - name: Upload Newman results

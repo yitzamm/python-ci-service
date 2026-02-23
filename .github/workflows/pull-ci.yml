@@ -1,0 +1,16 @@
+name: Pull Request CI
+
+# Se dispara en solicitudes pull a la rama prod (main)
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  newman-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout repo
+      - name: Checkout code
+        uses: actions/checkout@v4

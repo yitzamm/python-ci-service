@@ -1,0 +1,24 @@
+{
+  "info": {
+    "name": "Mi Colección API",
+    "_postman_id": "12345-abcde-67890",
+    "description": "Colección de pruebas para CI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Prueba GET /ping",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://example.com/ping",
+          "protocol": "https",
+          "host": ["example","com"],
+          "path": ["ping"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

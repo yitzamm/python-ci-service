@@ -35,6 +35,10 @@ jobs:
       - name: Lint (flake8)
         run: python -m flake8 .
 
+      # 6. Escáner de seguridad
+      - name: Security scan - bandit
+        run: bandit -r .
+
       # 6. Pruebas Python
       - name: Run tests
         run: PYTHONPATH=. pytest

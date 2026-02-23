@@ -1,0 +1,5 @@
+pytest
+flask
+flake8
+black
+bandit

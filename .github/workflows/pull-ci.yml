@@ -30,9 +30,9 @@ jobs:
         run: |
           newman run postman/collection.json --insecure --reporters cli,junit --reporter-junit-export newman-results.xml
 
-      # 5. Generar artefacto con los resultados obtenidos
+      # 5. Generar artefacto con los resultados de la prueba Newman
       - name: Upload Newman results
         uses: actions/upload-artifact@v4
         with:
           name: newman-results
-          path: newman-results.xml
+          path: newman-results.json

@@ -37,8 +37,16 @@ jobs:
 
       # 6. Escáner de seguridad
       - name: Security scan - bandit
+        # Escanear todo el repo recursivamente
         run: bandit -r . -f json -o bandit_report.json -lll
 
-      # 6. Pruebas Python
+      # 7. Generar artefacto con los resultados de la prueba Bandit
+      - name: Upload Bandit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: bandit-report
+          path: bandit_report.json
+
+      # 8. Pruebas Python
       - name: Run tests
         run: PYTHONPATH=. pytest
